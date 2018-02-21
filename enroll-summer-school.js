@@ -15,10 +15,13 @@ const studentData = [
     course: 'Computer science',
   },
 ];
-  
+
+// is there a better way of doing this?
 function enrollInSummerSchool(students) {
   let newArr = [];
-  studentData.forEach();// your code here
+  students.forEach(student => student.status = "In Summer school");
+  students.forEach(student => newArr.push(student));
+  return newArr;
 }
   
 /* From here down, you are not expected to understand.... for now :)
