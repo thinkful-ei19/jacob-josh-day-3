@@ -4,3 +4,7 @@ console.log(loaf.flour,loaf.water);
 
 console.log(loaf.hydration());
 
+let obj = {foo:'hi', bar:'bye',fum:24,quux:true,spam:'wrong'};
+for (let key in obj) {
+    console.log(`${key} ${obj[key]}`);
+}
