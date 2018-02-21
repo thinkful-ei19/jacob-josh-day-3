@@ -8,3 +8,6 @@ let obj = {foo:'hi', bar:'bye',fum:24,quux:true,spam:'wrong'};
 for (let key in obj) {
     console.log(`${key} ${obj[key]}`);
 }
+
+const meals= ['breakfast','second breakfast','elvenses','lunch','afternoon tea','dinner','supper'];
+console.log(meals[5]);
