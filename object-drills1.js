@@ -54,16 +54,39 @@ console.log(decodeWords('craft block argon meter bells brown croon droop'));
 
 
 
-function createCharacter(Name, Nickname, Race, Origin, Attack, Defense){
+function createCharacter(name, nickname, race, origin, attack, defense, weapon){
 return {
-    Name:Name,
-    Nickname: Nickname,
-    Race:Race,
-    Origin:Origin,
-    Attack: Attack,
-    Defense: Defense,
-    describe: function (){console.log(`${Name} is a ${Race} from ${Origin}`)},
-    evaluateFight: function(character){if(character.Defense>this.Attack && this.Defense>character.Attack){return `Your opponent takes ${this.Attack-character.Defense} damage and you receive ${character.Attack-this.Defense} damage.`}
+    name,
+    nickname,
+    race,
+    origin,
+    attack,
+    defense,
+    weapon,
+    describe: function (){console.log(`${name} is a ${race} from ${origin} who uses a ${weapon}`)},
+    evaluateFight: function(character){
+        let dmgDealt = 0;
+        let dmgRecieved = 0;
+        if (this.attack > character.defense) {
+            dmgDealt = this.attack - character.defense;
+        }
+        if (character.attack > this.defense) {
+            dmgRecieved = character.attack - this.defense;
+        }
+        return `You took ${dmgRecieved} damage and dealt ${dmgDealt} damage.`;
+    }
 };
 }
-console.log(createCharacter());
+let jacob = createCharacter("jacob","","","",10,8);
+let bob = createCharacter("bob","","","",10,15);
+console.log(jacob.evaluateFight(bob));
+let characters = [createCharacter("Gandalf the White","gandalf","Wizard","Middle Earth",10,6), 
+createCharacter("Bilbo Baggins","bilbo","Hobbit","The Shire",2,1),
+createCharacter("Frodo Baggins","frodo","Hobbit","The Shire",3,2),
+createCharacter("Aragorn son of Arathorn","aragorn","Man","Dunnedain",6,8),
+createCharacter("Legolas","legolas","Elf","Woodland Realm",8,5),
+createCharacter("Arwen Undomiel", "arwen", "Half-Elf", "Rivendell",100,100)];
+
+characters.find(character => character.nickname === "aragorn").describe();
+let hobbitses = characters.filter(character => character.race === "Hobbit");
+let strongBois = characters.filter(character => character.attack > 5);
